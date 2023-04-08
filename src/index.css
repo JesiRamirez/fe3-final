@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .favButton{
   background-color: rgba(136, 136, 136, 0.116);
   padding: 10px;
@@ -42,6 +43,7 @@ a:hover{
 } 
 
 footer {
+  background-color:  #12121296;  ;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -119,6 +121,16 @@ tr:nth-child(even) {
   background-color: #12121296;
   color: white;
 }
-.dark > a {
+.dark > Link {
   color: white;
+}
+
+.dark .card {
+  background-color: #181818;
+}
+
+.icon{
+  width: 30px;
+  height: 30px;
+  padding-left: 30px;
 }

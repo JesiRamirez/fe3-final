@@ -1,32 +1,57 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
-
+import { useParams } from 'react-router-dom'
 
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
-const Detail = ({id}) => {
+const Detail = () => {
  
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
 
-  const [detail, setDetail] = useState([])
+  const {id} = useParams();
 
+  const [dentist, setDentist] = useState({
+    id: "",
+    name: "",
+    email: "",
+    address: {},
+    phone: "",
+    website: "",
+    company: {},
+  });
+  
   const url = `https://jsonplaceholder.typicode.com/users/:${id}`
 
 
-
+  useEffect(() => {
+    fetch(url)
+      .then((resp) => resp.json())
+      .then((data) => setDentist(data));
+  }, []);
 
   return (
     <>
       <Navbar/>
       <h1>Detail Dentist id </h1>
       <div >
-        <img src="./images/doctor.png" alt="" width={200}/>
-        <h1>{detail.name}</h1>
-        <h1>{detail.email}</h1>
-        <h1>{detail.phone}</h1>
-        <h1>{detail.website}</h1>
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Website</th>
+          </tr>
+          <tr>
+            <td>{dentist.name}</td>
+            <td>{dentist.email}</td>
+            <td>{dentist.phone}</td>
+            <td>{dentist.website}</td>
+          </tr>
+        </tbody>
+      </table>
       </div>
 
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
